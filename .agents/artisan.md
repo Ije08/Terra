@@ -1,0 +1,27 @@
+# Artisan notes
+
+- The app uses a single client-side `app/page.tsx` shell with local `useState` for screen and game state.
+- TerraCanvas now selects the v4 female-cute 4x4 walk and hand-reach sheets when available; F drives the interaction sequence and v3 remains the fallback for other presets.
+- TerraCanvas no longer mounts a plaza terminal button or terminal fallback; F only collects a nearby resource while keeping the hand-reach animation.
+- Start-screen interaction is isolated in `TerraStartScreen`; authentication is currently a local-development entry point.
+- Character profiles are stored under `terra.character-profile` in `localStorage`; login skips character creation only when the stored profile passes the local shape guard.
+- The start-screen orbit layer was removed while keeping the existing planet, moon, sun, and star layers.
+- Login, account creation, and plaza navigation share one full-screen loading component with a destination-specific message.
+- The game shell now uses local state for four material counters, a shared construction panel, top-level command navigation, and a persistent local global-chat dock; rare signal remnants remain UI-only until acquisition rules are designed.
+- The login/create flow opens the same glassmorphism profile editor; stored profiles are loaded as editable initial state instead of skipping directly to HOME.
+- Female profile previews compose the generated base, outfit, and hair layers; the preview layer spans must remain block-sized because absolutely positioned inline spans collapse to zero height.
+- Post-authentication now resolves to `COMMAND`, not gameplay. `TerraCommandCenter` owns its local route/comms/build/missions tab state, while `app/page.tsx` retains only cross-screen and gameplay resource state.
+- The former terminal modal is no longer mounted from the game shell; its route, chat, construction, and mission content is represented directly in the command center.
+- Route imagery uses four same-size transparent start-screen layers as CSS Module backgrounds so their source coordinates remain aligned; interactive buttons are lightweight signal markers rather than duplicate CSS planets.
+- `RouteMap` starts with `selectedPlanet: null`; the information panel is conditionally mounted after a planet click and includes an explicit close action.
+- Route and comms views share one message array owned by `TerraCommandCenter`; each chat surface keeps only its input draft locally.
+- Shared chat messages are structured records (`channel`, `author`, `body`, `time`) rather than display strings. Channel filtering remains local to each `ChatWindow`, system chat is read-only, and sent local messages remain visible across route and comms surfaces.
+- `TerraAuthPanel` owns only temporary login/signup UI state. Local credentials are never persisted or sent; submitting continues into the existing prototype loading flow.
+- Sign in with ChatGPT is feature-gated by `NEXT_PUBLIC_CHATGPT_AUTH_ENABLED`; when enabled, the platform OAuth path is used and `/api/auth/chatgpt` reads only the trusted Sites authentication headers through `getChatGPTUser`.
+- Authentication UI copy is Korean-only until locale selection exists. The left rail describes the game loop instead of duplicating login state, and primary authentication buttons use centered text without decorative arrows.
+- The start screen exposes one `테라 접속` action; account creation remains inside the authentication panel. On desktop the title group is anchored over the lower-left TERRA composition and returns to centered positioning on narrow screens.
+- Character customization now uses local typed state with migration-safe defaults: four fixed atlas presets (male/female × cute/composed) and three outfit color tokens. The UI stays accessible with pressed buttons and persists the complete profile shape.
+- The start title is isolated in `MovableStartTitle`: users unlock it, drag by pointer or move it with arrow keys, then persist the normalized viewport position in localStorage by selecting `위치 고정`.
+- Once the user finalized the start title position, `MovableStartTitle` became a read-only presentation component: it loads the persisted position but renders no adjustment controls or drag handlers.
+- Persisted start-title hydration is hidden until the saved position is read, preventing the default lower-left coordinates from flashing during a refresh.
+- The start action now bypasses the auth modal and calls the existing login transition directly; the loading destination still branches to character creation or COMMAND from the stored profile.

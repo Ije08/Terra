@@ -1,0 +1,69 @@
+  .player-sprite-anchor {
+    aspect-ratio: 1 / 1;
+    height: clamp(96px, 10vw, 128px);
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    transform: translate(-50%, -86%);
+    width: clamp(96px, 10vw, 128px);
+  z-index: 5;
+}
+
+.player-sprite-anchor[data-sprite-action="walk"][data-sprite-frame="1"] { transform: translate(-50%, calc(-86% - 2px)); }
+
+  .player-sprite {
+    background-repeat: no-repeat;
+    display: block;
+    filter: drop-shadow(0 8px 10px rgba(1, 9, 18, .75)) drop-shadow(0 0 12px rgba(94, 224, 234, .32));
+    height: 100%;
+    image-rendering: auto;
+    width: 100%;
+  }
+
+.interaction-hand {
+  --hand-angle: 90deg;
+  background: linear-gradient(90deg, #e9ffff 0 18%, #75dce5 62%, transparent 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(117, 220, 229, .82);
+  height: 6px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform-origin: 0 50%;
+  width: 34px;
+  z-index: 2;
+}
+
+.interaction-hand::after {
+  background: #e9ffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(233, 255, 255, .95);
+  content: "";
+  height: 8px;
+  position: absolute;
+  right: -2px;
+  top: -1px;
+  width: 8px;
+}
+
+.player-sprite-anchor[data-sprite-direction="up"] .interaction-hand { --hand-angle: -90deg; }
+.player-sprite-anchor[data-sprite-direction="up-left"] .interaction-hand { --hand-angle: -135deg; }
+.player-sprite-anchor[data-sprite-direction="left"] .interaction-hand { --hand-angle: 180deg; }
+.player-sprite-anchor[data-sprite-direction="down-left"] .interaction-hand { --hand-angle: 135deg; }
+.player-sprite-anchor[data-sprite-direction="down-right"] .interaction-hand { --hand-angle: 45deg; }
+.player-sprite-anchor[data-sprite-direction="right"] .interaction-hand { --hand-angle: 0deg; }
+.player-sprite-anchor[data-sprite-direction="up-right"] .interaction-hand { --hand-angle: -45deg; }
+.player-sprite-anchor.is-interacting .interaction-hand { animation: interaction-hand-extend .42s ease-out both; }
+
+@keyframes interaction-hand-extend {
+  0% { opacity: 0; transform: translateY(-50%) rotate(var(--hand-angle)) scaleX(.08); }
+  16% { opacity: 1; transform: translateY(-50%) rotate(var(--hand-angle)) scaleX(.32); }
+  58% { opacity: 1; transform: translateY(-50%) rotate(var(--hand-angle)) scaleX(1); }
+  100% { opacity: 0; transform: translateY(-50%) rotate(var(--hand-angle)) scaleX(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .player-sprite-anchor[data-sprite-action="walk"][data-sprite-frame="1"] { transform: translate(-50%, -86%); }
+  .player-sprite-anchor.is-interacting .interaction-hand { animation-duration: .01ms; }
+}
