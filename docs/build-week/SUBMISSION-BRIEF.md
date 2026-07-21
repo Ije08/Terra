@@ -130,6 +130,6 @@ Devpost에 저장소 자체의 영상 대본이나 촬영 체크리스트를 업
 
 ## 12. 제출 전 확인할 링크
 
-- 공개 데모 URL: 미정
+- 공개 데모 URL: https://terra-openai-build-week.frameone08.chatgpt.site
 - 영상 URL: 미정
 - 저장소: `https://github.com/Ije08/Terra.git`

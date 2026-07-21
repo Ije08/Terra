@@ -28,6 +28,8 @@ npm install
 npm run dev
 ```
 
+심사자용 공개 데모: [TERRA on Codex Sites](https://terra-openai-build-week.frameone08.chatgpt.site)
+
 브라우저에서 출력된 로컬 URL을 열고 `로그인` 또는 `계정 생성`을 선택해 계정 패널을 엽니다. 로컬 프로토타입 폼을 제출하면 저장된 캐릭터가 없을 때는 검은 전환 뒤 캐릭터 생성창이 열리고, 저장된 캐릭터가 있으면 항로 관제실로 이동합니다. 관제실에서 `TERRA 입장하기`를 눌러야 광장 플레이가 시작됩니다.
 
 ## 검증
