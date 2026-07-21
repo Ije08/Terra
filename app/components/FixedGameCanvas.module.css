@@ -1,0 +1,17 @@
+.viewport {
+  background: #000;
+  display: grid;
+  inset: 0;
+  overflow: hidden;
+  place-items: center;
+  position: fixed;
+}
+
+.canvas {
+  flex: 0 0 auto;
+  height: 900px;
+  overflow: hidden;
+  position: relative;
+  transform-origin: center;
+  width: 1600px;
+}

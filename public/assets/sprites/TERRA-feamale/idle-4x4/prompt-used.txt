@@ -1,0 +1,1 @@
+female explorer exact identity, corrected safe-padding 4x4 idle, all directions fully contained

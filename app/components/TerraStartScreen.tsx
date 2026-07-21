@@ -1,13 +1,17 @@
 "use client"
 
 import { MovableStartTitle } from "./MovableStartTitle"
+import { LanguageToggle } from "./LanguageToggle"
+import { TerraMusicToggle } from "./TerraMusicToggle"
 import styles from "./TerraStartScreen.module.css"
 
 interface TerraStartScreenProps {
   readonly onLogin: () => void
+  readonly musicEnabled: boolean
+  readonly onToggleMusic: () => void
 }
 
-export function TerraStartScreen({ onLogin }: TerraStartScreenProps) {
+export function TerraStartScreen({ onLogin, musicEnabled, onToggleMusic }: TerraStartScreenProps) {
   return (
     <main className={`start-screen ${styles.art}`}>
       <div className={styles.spaceBase} aria-hidden="true" />
@@ -29,6 +33,7 @@ export function TerraStartScreen({ onLogin }: TerraStartScreenProps) {
       <div className={styles.sunCorona} aria-hidden="true" />
       <div className={styles.sunLayer} aria-hidden="true" />
       <div className={styles.vignette} aria-hidden="true" />
+      <div className={styles.utilityControls}><LanguageToggle /><TerraMusicToggle enabled={musicEnabled} onToggle={onToggleMusic} /></div>
       <MovableStartTitle onConnect={onLogin} />
     </main>
   )

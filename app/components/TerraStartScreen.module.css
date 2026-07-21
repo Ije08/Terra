@@ -32,7 +32,7 @@
 .brightStars i:nth-child(10) { left:72%; top:24%; animation-delay:-.9s; }
 .brightStars i:nth-child(11) { left:84%; top:66%; animation-delay:-3.4s; }
 .brightStars i:nth-child(12) { left:4%; top:84%; animation-delay:-5.7s; }
-.cometTrack { height:34px; left:-34vw; position:absolute; width:320px; transform-origin:left center; }
+.cometTrack { height:34px; left:-544px; position:absolute; width:320px; transform-origin:left center; }
 .cometRunner { opacity:0; animation:comet-flight 30s linear infinite; will-change:transform,opacity; }
 .cometOne { top:9%; transform:rotate(18deg); }
 .cometTwo { top:62%; transform:rotate(-11deg); }
@@ -55,19 +55,24 @@
 .sunCorona { background: radial-gradient(circle at 85% 17%, rgba(255, 219, 143, .52) 0 4%, rgba(255, 197, 103, .2) 8%, rgba(255, 167, 77, .1) 15%, transparent 29%); filter: blur(5px); opacity: .62; transform-origin: 85% 17%; z-index: -1.5; animation: sun-corona 5.8s ease-in-out infinite alternate; }
 .sunLayer { background-image: url('/assets/layers/start/sol.png'); opacity: .96; transform-origin: 85% 17%; z-index: -1; animation: sun-pulse 8s ease-in-out infinite alternate; }
 .vignette { background: radial-gradient(circle at 72% 48%, transparent 0 28%, rgba(2, 7, 15, .1) 55%, rgba(1, 5, 12, .7) 100%); inset: 0; pointer-events: none; position: absolute; z-index: 0; }
+.utilityControls { align-items:center; display:flex; gap:10px; position:absolute; right:34px; top:30px; z-index:3; }
 .authBackdrop { background:rgba(0,3,8,.7); inset:0; position:absolute; z-index:7; backdrop-filter:blur(5px); }
-.titleOnly { left:0; margin:0; max-width:620px; opacity:0; position:absolute; text-align:center!important; top:0; width:min(45vw,620px); z-index:2; }
+.titleOnly { left:0; margin:0; max-width:620px; opacity:0; position:absolute; text-align:center!important; top:0; transform:none; width:620px; z-index:2; }
 .titleReady { opacity:1; transition:opacity 160ms ease-out; }
 .brandLockup { align-items: center; color: #f4f1ec; display: flex; flex-direction: column; padding: 18px 20px; width: 100%; }
-.titleWordmark { font-family: Georgia, "Times New Roman", serif; font-size: clamp(44px, 5.4vw, 88px); font-weight: 400; letter-spacing: .24em; line-height: 1; margin-left: .24em; text-shadow: 0 0 24px rgba(255, 255, 255, .12); white-space: nowrap; }
+.textFocusIn { -webkit-animation: text-focus-in 1s cubic-bezier(.55,.085,.68,.53) both; animation: text-focus-in 1s cubic-bezier(.55,.085,.68,.53) both; }
+.titleWordmark { font-family: Georgia, "Times New Roman", serif; font-size: 86px; font-weight: 400; letter-spacing: .24em; line-height: 1; margin-left: .24em; text-shadow: 0 0 24px rgba(255, 255, 255, .12); white-space: nowrap; }
 .titleRule { align-items: center; display: flex; gap: 14px; margin: 22px auto 11px; width: min(370px, 78%); }
 .titleRule i { background: linear-gradient(90deg, transparent, rgba(237, 218, 178, .75), transparent); display: block; flex: 1; height: 1px; }
 .titleRule b { color: #dfb96d; font-size: 12px; font-weight: 400; text-shadow: 0 0 12px rgba(230, 187, 95, .8); transform: rotate(45deg); }
-.titleSubmark { font-family: Georgia, "Times New Roman", serif; font-size: clamp(26px, 3vw, 46px); font-weight: 400; letter-spacing: .42em; line-height: 1; margin-left: .42em; }
-.authActions { align-items: center; display: flex; flex-direction: column; gap: 12px; margin-top: 34px; }
-.loginButton { border-radius:4px; font-size:14px; min-height:48px; min-width:230px; padding:12px 22px; transition:background .2s ease,box-shadow .2s ease,transform .2s ease; }
-.loginButton { background: linear-gradient(120deg, #75d9dd, #8eabd9); border: 1px solid #a7ffff; color: #07141d; font-weight: 800; }
-.loginButton:hover { box-shadow:0 0 26px rgba(117,217,221,.24); transform:translateY(-2px); }
+.titleSubmark { font-family: Georgia, "Times New Roman", serif; font-size: 46px; font-weight: 400; letter-spacing: .42em; line-height: 1; margin-left: .42em; }
+.authActions { align-items: center; display: flex; flex-direction: column; gap: 12px; margin-top: 34px; opacity:0; transform:scaleY(0); transform-origin:center; }
+.scaleInVerCenter { -webkit-animation: scale-in-ver-center .5s cubic-bezier(.25,.46,.45,.94) 1s both; animation: scale-in-ver-center .5s cubic-bezier(.25,.46,.45,.94) 1s both; }
+.loginButton { align-items:center; background:linear-gradient(115deg,rgba(12,45,60,.96),rgba(34,77,102,.96) 54%,rgba(39,53,96,.96)); border:1px solid rgba(163,251,244,.92); border-radius:0; box-shadow:0 0 0 1px rgba(9,23,34,.88),0 12px 26px rgba(0,0,0,.28),inset 0 1px 0 rgba(237,255,255,.32); clip-path:polygon(0 0,calc(100% - 13px) 0,100% 13px,100% calc(100% - 13px),calc(100% - 13px) 100%,13px 100%,0 calc(100% - 13px)); color:#e9ffff; cursor:pointer; display:inline-flex; font-size:16px; font-weight:800; gap:0; justify-content:center; letter-spacing:.18em; min-height:56px; min-width:250px; overflow:hidden; padding:12px 24px; position:relative; isolation:isolate; text-align:center; transition:background .2s ease,box-shadow .2s ease,filter .2s ease,transform .2s ease; }
+.loginButton::after { background:linear-gradient(90deg,transparent,rgba(255,255,255,.58),transparent); content:""; inset:0 auto 0 -45%; opacity:0; pointer-events:none; position:absolute; transform:skewX(-20deg); width:34%; }
+.loginButton:hover { background:linear-gradient(115deg,rgba(19,67,80,.98),rgba(49,103,123,.98) 54%,rgba(56,70,125,.98)); box-shadow:0 0 0 1px rgba(143,244,238,.34),0 0 30px rgba(117,217,221,.34),0 14px 30px rgba(0,0,0,.34),inset 0 1px 0 rgba(237,255,255,.46); filter:brightness(1.08); transform:translateY(-2px) scale(1.02); }
+.loginButton:hover::after { animation:button-sweep .85s ease-out; opacity:1; }
+.loginButton:active { transform:translateY(0) scale(.99); }
 .loginButton:focus-visible { outline:2px solid #fff; outline-offset:4px; }
 
 @keyframes nebula-drift { from { transform: scale(1.04) translate3d(-1%, 0, 0); } to { transform: scale(1.08) translate3d(1%, -1%, 0); } }
@@ -81,7 +86,12 @@
 @keyframes effect-stars-near { from { opacity:.42; transform:translate3d(0,0,0); } to { opacity:.68; transform:translate3d(.22%,-.18%,0); } }
 @keyframes effect-stars-dense { from { opacity:.22; transform:translate3d(0,0,0); } to { opacity:.46; transform:translate3d(-.16%,.12%,0); } }
 @keyframes bright-star { 0%,100% { opacity:.18; transform:scale(.65); } 50% { opacity:.9; transform:scale(1.15); } }
-@keyframes comet-flight { 0% { opacity:1; transform:translate3d(0,0,0); } 7% { opacity:1; transform:translate3d(154vw,0,0); } 7.1%,100% { opacity:0; transform:translate3d(158vw,0,0); } }
+@keyframes comet-flight { 0% { opacity:1; transform:translate3d(0,0,0); } 7% { opacity:1; transform:translate3d(2464px,0,0); } 7.1%,100% { opacity:0; transform:translate3d(2528px,0,0); } }
+@-webkit-keyframes text-focus-in { 0% { filter:blur(12px); opacity:0; } 100% { filter:blur(0); opacity:1; } }
+@keyframes text-focus-in { 0% { filter:blur(12px); opacity:0; } 100% { filter:blur(0); opacity:1; } }
+@-webkit-keyframes scale-in-ver-center { 0% { opacity:0; transform:scaleY(0); } 100% { opacity:1; transform:scaleY(1); } }
+@keyframes scale-in-ver-center { 0% { opacity:0; transform:scaleY(0); } 100% { opacity:1; transform:scaleY(1); } }
+@keyframes button-sweep { from { transform:translateX(0) skewX(-20deg); } to { transform:translateX(420px) skewX(-20deg); } }
 
 @media (prefers-reduced-motion: reduce) {
   .nebulaLayer, .planetLayer, .moonLayer, .sunCorona, .sunLayer, .starField, .starField::before, .starField::after, .effectStars, .brightStars i { animation:none!important; transform:none!important; }
@@ -89,14 +99,6 @@
   .starField { opacity: .82; filter: none; }
   .starField::before { opacity: .55; }
   .starField::after { opacity: .35; }
-}
-
-@media (max-width: 860px) {
-  .titleOnly { max-width:94vw; width:94vw; }
-}
-
-@media (max-width: 560px) {
-  .titleWordmark { font-size: clamp(30px, 9vw, 48px); letter-spacing: .16em; margin-left: .16em; }
-  .titleSubmark { font-size: clamp(22px, 6vw, 32px); letter-spacing: .3em; margin-left: .3em; }
-  .titleRule { margin-top: 16px; }
+  .textFocusIn { -webkit-animation: none; animation: none; }
+  .scaleInVerCenter { -webkit-animation: none; animation: none; opacity:1; transform:scaleY(1); }
 }

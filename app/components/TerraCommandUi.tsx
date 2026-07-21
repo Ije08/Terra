@@ -13,7 +13,12 @@ export const RESOURCE_META: readonly { readonly key: ResourceKey; readonly label
   { key: "reclaimed", label: "재활용 부품", code: "RECLAIMED", tone: "reclaimed" },
 ]
 
-const BUILD_REQUIREMENTS: Readonly<Record<ResourceKey, number>> = { wood: 1200, iron: 900, signal: 12, reclaimed: 240 }
+export const BUILD_REQUIREMENTS: Readonly<Record<ResourceKey, number>> = { wood: 1200, iron: 900, signal: 12, reclaimed: 240 }
+
+export function calculateBuildProgress(contributed: ResourceInventory): number {
+  const average = RESOURCE_META.reduce((total, resource) => total + Math.min(1, contributed[resource.key] / BUILD_REQUIREMENTS[resource.key]), 0) / RESOURCE_META.length
+  return Math.min(100, Math.round(average * 100))
+}
 
 function ResourceIcon({ resource }: { readonly resource: ResourceKey }) {
   const paths: Readonly<Record<ResourceKey, ReactNode>> = {
@@ -30,17 +35,24 @@ export function ResourceHud({ inventory }: { readonly inventory: ResourceInvento
 }
 
 export function GameNav({ activeTab, onNavigate }: { readonly activeTab: TerminalTab; readonly onNavigate: (tab: TerminalTab) => void }) {
-  const items: readonly { readonly id: TerminalTab; readonly label: string }[] = [{ id: "map", label: "항로" }, { id: "chat", label: "교신" }, { id: "build", label: "전초기지" }, { id: "missions", label: "작전" }]
-  return <nav className="game-nav" aria-label="테라 관제 메뉴">{items.map((item) => <button className={activeTab === item.id ? "game-nav-item active" : "game-nav-item"} type="button" key={item.id} onClick={() => onNavigate(item.id)} aria-current={activeTab === item.id ? "page" : undefined}>{item.label}</button>)}</nav>
+  const items: readonly { readonly id: TerminalTab; readonly label: string }[] = [{ id: "map", label: "항로" }, { id: "comms", label: "교신" }, { id: "build", label: "프로젝트" }, { id: "missions", label: "오늘의 미션" }]
+  return <nav className="game-nav" aria-label="항로 관제 메뉴">{items.map((item) => <button className={activeTab === item.id ? "game-nav-item active" : "game-nav-item"} type="button" key={item.id} onClick={() => onNavigate(item.id)} aria-current={activeTab === item.id ? "page" : undefined}>{item.label}</button>)}</nav>
 }
 
-export function CommunityBuildPanel({ inventory, progress }: { readonly inventory: ResourceInventory; readonly progress: number }) {
-  return <section className="build-panel" aria-labelledby="build-panel-title"><div className="build-panel-heading"><div><span className="eyebrow">SHARED CONSTRUCTION</span><h2 id="build-panel-title">LUNA 통신탑 복구</h2></div><strong>{progress}%</strong></div><div className="build-progress" aria-label={`공동 건설 진행도 ${progress}%`} role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}><span style={{ width: `${progress}%` }} /></div><p className="build-panel-copy">모두의 다음 항로를 열기 위해 네 가지 재료를 모읍니다.</p><ul className="material-list">{RESOURCE_META.map((resource) => { const required = BUILD_REQUIREMENTS[resource.key]; const current = inventory[resource.key]; const ratio = Math.min(100, Math.round((current / required) * 100)); return <li className="material-row" key={resource.key}><span className={`resource-glyph ${resource.tone}`} aria-hidden="true" /><span className="material-name"><strong>{resource.label}</strong>{resource.rare ? <small>희귀 · 특별 탐사</small> : <small>광장 수집</small>}</span><span className="material-amount"><strong>{current.toLocaleString("ko-KR")}</strong><small>/ {required.toLocaleString("ko-KR")}</small><i aria-hidden="true"><b style={{ width: `${ratio}%` }} /></i></span></li> })}</ul></section>
+interface CommunityBuildPanelProps {
+  readonly inventory: ResourceInventory
+  readonly contributed?: ResourceInventory
+  readonly progress: number
+  readonly onDeposit?: (resource: ResourceKey, amount: number) => void
+}
+
+export function CommunityBuildPanel({ inventory, contributed = { wood: 0, iron: 0, signal: 0, reclaimed: 0 }, progress, onDeposit }: CommunityBuildPanelProps) {
+  return <section className="build-panel" aria-labelledby="build-panel-title"><div className="build-panel-heading"><div><span className="eyebrow">SHARED CONSTRUCTION</span><h2 id="build-panel-title">TERRA 공동기지 복구</h2></div><strong>{progress}%</strong></div><div className="build-progress" aria-label={`공동 건설 진행도 ${progress}%`} role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}><span style={{ width: `${progress}%` }} /></div><p className="build-panel-copy">모두의 생활과 다음 항로를 위해 녹슨 기지를 다시 깨웁니다.</p><ul className="material-list">{RESOURCE_META.map((resource) => { const required = BUILD_REQUIREMENTS[resource.key]; const personal = inventory[resource.key]; const shared = contributed[resource.key]; const ratio = Math.min(100, Math.round((shared / required) * 100)); return <li className="material-row" key={resource.key}><span className={`resource-glyph ${resource.tone}`} aria-hidden="true" /><span className="material-name"><strong>{resource.label}</strong><small>{resource.rare ? "희귀 · 특별 탐사" : "탐사와 광장 수집"}</small></span><span className="material-amount"><strong>{shared.toLocaleString("ko-KR")}</strong><small>/ {required.toLocaleString("ko-KR")}</small><i aria-hidden="true"><b style={{ width: `${ratio}%` }} /></i></span><span className="material-shared">개인 보유 <b>{personal.toLocaleString("ko-KR")}</b></span><span className="material-actions">{onDeposit ? <><button type="button" onClick={() => onDeposit(resource.key, 1)} disabled={personal < 1} aria-label={`${resource.label} 1개 넣기`}>1개 넣기</button><button type="button" onClick={() => onDeposit(resource.key, personal)} disabled={personal < 1} aria-label={`${resource.label} 모두 넣기`}>모두 넣기</button></> : null}</span></li> })}</ul></section>
 }
 
 export function GlobalChatDock({ nickname, onOpenChat }: { readonly nickname: string; readonly onOpenChat: () => void }) {
   const [message, setMessage] = useState("")
-  const [messages, setMessages] = useState<readonly string[]>(["[탐사대] TERRA 광장에 새로운 신호가 감지되었습니다.", "[별바람] 오늘도 무사히 만나요."])
+  const [messages, setMessages] = useState<readonly string[]>(["[관제사] TERRA 광장에 새로운 신호가 감지되었습니다.", "[별바람] 오늘도 무사히 만나길!"])
   const sendMessage = (event: React.FormEvent<HTMLFormElement>) => { event.preventDefault(); const nextMessage = message.trim(); if (!nextMessage) return; setMessages((previous) => [...previous, `[${nickname}] ${nextMessage}`]); setMessage("") }
-  return <aside className="chat-dock" aria-labelledby="chat-dock-title"><header><div><span className="live-dot" /><span id="chat-dock-title">전역 교신</span></div><button type="button" onClick={onOpenChat}>전체 채팅 ↗</button></header><div className="chat-dock-messages" aria-live="polite">{messages.slice(-3).map((chatMessage, index) => <p key={`${chatMessage}-${index}`}>{chatMessage}</p>)}</div><form onSubmit={sendMessage}><input value={message} onChange={(event) => setMessage(event.target.value)} maxLength={120} placeholder="신호를 남겨보세요" aria-label="전역 교신 메시지" /><button type="submit" aria-label="메시지 보내기">↑</button></form></aside>
+  return <aside className="chat-dock" aria-labelledby="chat-dock-title"><header><div><span className="live-dot" /><span id="chat-dock-title">전역 교신</span></div><button type="button" onClick={onOpenChat}>전체 채팅 열기</button></header><div className="chat-dock-messages" aria-live="polite">{messages.slice(-3).map((chatMessage, index) => <p key={`${chatMessage}-${index}`}>{chatMessage}</p>)}</div><form onSubmit={sendMessage}><input value={message} onChange={(event) => setMessage(event.target.value)} maxLength={120} placeholder="신호를 남겨보세요" aria-label="전역 교신 메시지" /><button type="submit" aria-label="메시지 보내기">→</button></form></aside>
 }

@@ -1,0 +1,806 @@
+{
+  "kit": "FIRST LIGHT: TERRA forest environment kit",
+  "generator": "Blender procedural Python",
+  "target": "Web / React Three Fiber / Three.js",
+  "format": "GLB 2.0",
+  "scale": "1 unit = 1 meter",
+  "estimated_cost_usd": 0,
+  "assets": [
+    {
+      "file": "terra_recovery_tree_lod0.glb",
+      "triangles": 344,
+      "vertices": 186,
+      "dimensions_m": [
+        4.047,
+        2.1,
+        4.9
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "branch_left",
+          "triangles": 28,
+          "vertices": 16,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "branch_right",
+          "triangles": 28,
+          "vertices": 16,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "canopy_center",
+          "triangles": 80,
+          "vertices": 42,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "canopy_left",
+          "triangles": 80,
+          "vertices": 42,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "canopy_right",
+          "triangles": 80,
+          "vertices": 42,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "recovery_mark",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "trunk",
+          "triangles": 28,
+          "vertices": 16,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_recovery_tree",
+      "lod": 0
+    },
+    {
+      "file": "terra_recovery_tree_lod1.glb",
+      "triangles": 140,
+      "vertices": 84,
+      "dimensions_m": [
+        3.928,
+        1.786,
+        4.9
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "branch_left",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "branch_right",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "canopy_center",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "canopy_left",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "canopy_right",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "recovery_mark",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "trunk",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_recovery_tree",
+      "lod": 1
+    },
+    {
+      "file": "terra_recovery_tree_lod2.glb",
+      "triangles": 96,
+      "vertices": 60,
+      "dimensions_m": [
+        3.928,
+        1.786,
+        4.9
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "branch_left",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "branch_right",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "canopy_center",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "canopy_left",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "canopy_right",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "trunk",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_recovery_tree",
+      "lod": 2
+    },
+    {
+      "file": "terra_stone_cluster_lod0.glb",
+      "triangles": 160,
+      "vertices": 90,
+      "dimensions_m": [
+        2.457,
+        1.44,
+        1.3
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "moss_cap",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "signal_fragment",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "stone_large",
+          "triangles": 80,
+          "vertices": 42,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "stone_mid",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "stone_small",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_stone_cluster",
+      "lod": 0
+    },
+    {
+      "file": "terra_stone_cluster_lod1.glb",
+      "triangles": 80,
+      "vertices": 48,
+      "dimensions_m": [
+        2.457,
+        1.225,
+        1.3
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "moss_cap",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "stone_large",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "stone_mid",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "stone_small",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_stone_cluster",
+      "lod": 1
+    },
+    {
+      "file": "terra_stone_cluster_lod2.glb",
+      "triangles": 80,
+      "vertices": 48,
+      "dimensions_m": [
+        2.457,
+        1.225,
+        1.3
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "moss_cap",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "stone_large",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "stone_mid",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "stone_small",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_stone_cluster",
+      "lod": 2
+    },
+    {
+      "file": "terra_ruin_arch_lod0.glb",
+      "triangles": 100,
+      "vertices": 64,
+      "dimensions_m": [
+        3.848,
+        1.153,
+        3.313
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "broken_slab",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "copper_inlay",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "lintel",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "moss_left",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "moss_top",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "pillar_left",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "pillar_right",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_ruin_arch",
+      "lod": 0
+    },
+    {
+      "file": "terra_ruin_arch_lod1.glb",
+      "triangles": 100,
+      "vertices": 64,
+      "dimensions_m": [
+        3.848,
+        1.153,
+        3.313
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "broken_slab",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "copper_inlay",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "lintel",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "moss_left",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "moss_top",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "pillar_left",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "pillar_right",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_ruin_arch",
+      "lod": 1
+    },
+    {
+      "file": "terra_ruin_arch_lod2.glb",
+      "triangles": 68,
+      "vertices": 44,
+      "dimensions_m": [
+        3.303,
+        0.943,
+        2.431
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "copper_inlay",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "lintel",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "moss_left",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "pillar_left",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "pillar_right",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_ruin_arch",
+      "lod": 2
+    },
+    {
+      "file": "terra_signal_beacon_lod0.glb",
+      "triangles": 260,
+      "vertices": 140,
+      "dimensions_m": [
+        2.09,
+        1.72,
+        3.545
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "base",
+          "triangles": 28,
+          "vertices": 16,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "fin_left",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "fin_right",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "mast",
+          "triangles": 28,
+          "vertices": 16,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "signal_core",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "signal_halo",
+          "triangles": 96,
+          "vertices": 48,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "signal_ring",
+          "triangles": 64,
+          "vertices": 32,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_signal_beacon",
+      "lod": 0
+    },
+    {
+      "file": "terra_signal_beacon_lod1.glb",
+      "triangles": 132,
+      "vertices": 76,
+      "dimensions_m": [
+        1.55,
+        1.72,
+        3.171
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "base",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "fin_left",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "fin_right",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "mast",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "signal_core",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "signal_ring",
+          "triangles": 48,
+          "vertices": 24,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_signal_beacon",
+      "lod": 1
+    },
+    {
+      "file": "terra_signal_beacon_lod2.glb",
+      "triangles": 116,
+      "vertices": 68,
+      "dimensions_m": [
+        1.72,
+        1.72,
+        3.171
+      ],
+      "checks": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "all_meshes_have_uv": true
+      },
+      "meshes": [
+        {
+          "name": "base",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "fin_left",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "fin_right",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "mast",
+          "triangles": 12,
+          "vertices": 8,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "signal_core",
+          "triangles": 20,
+          "vertices": 12,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        },
+        {
+          "name": "signal_ring",
+          "triangles": 48,
+          "vertices": 24,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0,
+          "has_uv": true
+        }
+      ],
+      "asset": "terra_signal_beacon",
+      "lod": 2
+    }
+  ]
+}

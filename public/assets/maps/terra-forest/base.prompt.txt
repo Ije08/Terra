@@ -1,0 +1,1 @@
+Clean HD hand-painted 3/4 top-down RPG exploration base ground map for FIRST LIGHT: TERRA. Fixed 16:9 camera, readable pale stone paths, grass terraces, stream crossing, landing-pad foundation and clear prop anchors. Ground-level terrain only; no tall props, characters, UI or text.

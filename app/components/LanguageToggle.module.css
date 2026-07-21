@@ -1,0 +1,8 @@
+.toggle { align-items:center; background:rgba(5,15,22,.58); border:1px solid rgba(163,215,211,.34); border-radius:999px; box-shadow:0 8px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.08); color:#899d9f; cursor:pointer; display:inline-flex; gap:6px; min-height:40px; padding:0 12px; transition:background .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease,transform .2s ease; }
+.toggle:hover { background:rgba(20,51,60,.82); border-color:rgba(139,231,220,.78); box-shadow:0 0 22px rgba(98,216,213,.2),inset 0 1px 0 rgba(255,255,255,.13); color:#f2fffc; transform:translateY(-1px); }
+.toggle:focus-visible { outline:2px solid #fff; outline-offset:4px; }
+.toggle .active { color:#8ce8da; font-weight:850; }
+.toggle i { color:#50696c; font-size:11px; font-style:normal; }
+.toggle span { font-size:10px; font-weight:750; letter-spacing:.08em; }
+
+@media (prefers-reduced-motion:reduce) { .toggle { transition:none; } .toggle:hover { transform:none; } }

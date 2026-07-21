@@ -1,0 +1,17 @@
+{
+  "mapSize": { "width": 1672, "height": 941 },
+  "spawn": { "x": 836, "y": 790 },
+  "walkBounds": [
+    { "id": "central-route", "type": "rect", "x": 680, "y": 70, "w": 312, "h": 820 },
+    { "id": "lower-plaza", "type": "ellipse", "x": 836, "y": 738, "rx": 320, "ry": 165 },
+    { "id": "upper-plaza", "type": "ellipse", "x": 836, "y": 155, "rx": 330, "ry": 145 }
+  ],
+  "blockers": [
+    { "id": "stream-left", "type": "rect", "x": 0, "y": 435, "w": 720, "h": 90 },
+    { "id": "stream-right", "type": "rect", "x": 952, "y": 435, "w": 720, "h": 90 }
+  ],
+  "zones": {
+    "landing": { "type": "circle", "x": 836, "y": 155, "radius": 130 },
+    "forest": { "type": "rect", "x": 0, "y": 0, "w": 1672, "h": 941 }
+  }
+}

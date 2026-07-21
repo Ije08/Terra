@@ -1,11 +1,11 @@
   .player-sprite-anchor {
     aspect-ratio: 1 / 1;
-    height: clamp(96px, 10vw, 128px);
+    height: 128px;
     left: 50%;
     pointer-events: none;
     position: absolute;
     transform: translate(-50%, -86%);
-    width: clamp(96px, 10vw, 128px);
+    width: 128px;
   z-index: 5;
 }
 

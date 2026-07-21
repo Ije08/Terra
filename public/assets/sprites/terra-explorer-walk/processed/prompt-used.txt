@@ -1,8 +1,0 @@
-Use case: stylized-concept
-Asset type: player overworld walk sprite sheet
-View: slightly elevated 3/4 top-down
-Sheet: exact 4x4 grid; row 1 down, row 2 left, row 3 right, row 4 up
-Frames: neutral, left foot forward, neutral, right foot forward per row
-Subject: original Terra explorer with dark hair, pale expedition jacket, cyan signal patch, dark trousers and boots, blue scarf accent
-Style: clean HD 2D game sprite, polished hand-painted anime-inspired game asset, crisp outline
-Constraints: solid flat #FF00FF background, no text, no UI, no watermark, consistent identity, scale, anchor, and containment

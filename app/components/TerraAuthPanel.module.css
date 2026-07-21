@@ -1,4 +1,4 @@
-.dialog { background:rgba(2,9,18,.82); border:1px solid rgba(144,235,238,.34); box-shadow:0 30px 90px rgba(0,0,0,.58), inset 0 1px rgba(255,255,255,.06); display:grid; grid-template-columns:minmax(300px,.84fr) minmax(410px,1.16fr); left:50%; max-height:calc(100vh - 48px); min-height:600px; overflow:hidden; position:absolute; top:50%; transform:translate(-50%,-50%); width:min(860px,calc(100vw - 48px)); z-index:8; backdrop-filter:blur(22px) saturate(1.15); animation:panel-enter .42s cubic-bezier(.2,.78,.2,1) both; }
+.dialog { background:rgba(2,9,18,.82); border:1px solid rgba(144,235,238,.34); box-shadow:0 30px 90px rgba(0,0,0,.58), inset 0 1px rgba(255,255,255,.06); display:grid; grid-template-columns:minmax(300px,.84fr) minmax(410px,1.16fr); left:50%; max-height:852px; min-height:600px; overflow:hidden; position:absolute; top:50%; transform:translate(-50%,-50%); width:860px; z-index:8; backdrop-filter:blur(22px) saturate(1.15); animation:panel-enter .42s cubic-bezier(.2,.78,.2,1) both; }
 .dialog::before,.dialog::after { content:""; pointer-events:none; position:absolute; }
 .dialog::before { border:1px solid rgba(233,195,113,.5); height:20px; left:10px; top:10px; width:20px; border-bottom:0; border-right:0; }
 .dialog::after { background:linear-gradient(90deg,transparent,rgba(124,229,230,.68),transparent); height:1px; right:32px; top:0; width:45%; }
@@ -53,20 +53,6 @@
 .prototypeNote { color:rgba(179,204,201,.42); font-size:9px; line-height:1.55; margin:13px 0 0; text-align:center; }
 
 @keyframes panel-enter { from { opacity:0; transform:translate(-50%,calc(-50% + 18px)) scale(.985); } to { opacity:1; transform:translate(-50%,-50%) scale(1); } }
-
-@media (max-width:720px) {
-  .dialog { display:block; max-height:calc(100vh - 24px); min-height:0; width:calc(100vw - 24px); }
-  .signalRail { display:none; }
-  .formSide { padding:42px 24px 26px; }
-  .formHeader h2 { font-size:30px; }
-}
-
-@media (max-height:700px) and (min-width:721px) {
-  .dialog { min-height:0; }
-  .signalRail { min-height:540px; }
-  .formSide { padding-bottom:24px; padding-top:32px; }
-  .modeTabs { margin-bottom:22px; }
-}
 
 @media (prefers-reduced-motion:reduce) {
   .dialog { animation:none; }

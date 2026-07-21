@@ -70,8 +70,9 @@ export function movePoint(
   current: Point,
   direction: Point,
   deltaSeconds: number,
+  running = false,
 ): Point {
-  const speed = scene === "home" ? 154 : 176
+  const speed = scene === "home" ? (running ? 230 : 154) : (running ? 264 : 176)
   const next = clampPoint({
     x: current.x + direction.x * speed * deltaSeconds,
     y: current.y + direction.y * speed * deltaSeconds,

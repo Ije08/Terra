@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "id": "terra-plaza",
+  "name": "테라 거주 광장",
+  "spawn": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "objects": [],
+  "walls": [],
+  "terrain": {
+    "width": 56,
+    "depth": 56,
+    "columns": 32,
+    "rows": 32,
+    "cells": [],
+    "materials": []
+  }
+}
