@@ -160,8 +160,8 @@ export default function Home() {
   const [toast, setToast] = useState("")
   const [chatMessages, setChatMessages] = useState<readonly ChatMessage[]>([
     { id: "system-arrival", channel: "system", author: "관제사", body: "TERRA 광장에 새로운 탐사 신호가 감지되었습니다.", time: "20:14" },
-    { id: "local-iron", channel: "local", author: "별바람", body: "LUNA 복구에 철이 더 필요해요.", time: "20:16" },
-    { id: "local-welcome", channel: "local", author: "유리별", body: "신입대원 환영해요. 광장에서 만나요.", time: "20:18" },
+{ id: "local-iron", channel: "local", author: "대원_01", body: "LUNA 복구에 철이 더 필요해요.", englishBody: "LUNA needs more iron for restoration.", time: "20:16" },
+{ id: "local-welcome", channel: "local", author: "대원_02", body: "신입대원 환영해요. 광장에서 만나요.", englishBody: "Welcome, new explorer. See you in the plaza.", time: "20:18" },
   ])
 
   useEffect(() => {

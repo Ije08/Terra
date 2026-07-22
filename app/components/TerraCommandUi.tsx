@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from "react"
 import type { TerminalTab } from "../game/types"
+import { useLanguage } from "./LanguageProvider"
 
 export type ResourceKey = "wood" | "iron" | "signal" | "reclaimed"
 export type ResourceInventory = Record<ResourceKey, number>
@@ -12,6 +13,8 @@ export const RESOURCE_META: readonly { readonly key: ResourceKey; readonly label
   { key: "signal", label: "시그널 잔해", code: "SIGNAL", tone: "signal", rare: true },
   { key: "reclaimed", label: "재활용 부품", code: "RECLAIMED", tone: "reclaimed" },
 ]
+
+const RESOURCE_LABELS_EN: Readonly<Record<ResourceKey, string>> = { wood: "Wood", iron: "Iron", signal: "Signal Remnants", reclaimed: "Reclaimed Parts" }
 
 export const BUILD_REQUIREMENTS: Readonly<Record<ResourceKey, number>> = { wood: 1200, iron: 900, signal: 12, reclaimed: 240 }
 
@@ -31,7 +34,9 @@ function ResourceIcon({ resource }: { readonly resource: ResourceKey }) {
 }
 
 export function ResourceHud({ inventory }: { readonly inventory: ResourceInventory }) {
-  return <div className="resource-hud" aria-label="보유 자원" role="list">{RESOURCE_META.map((resource) => <div className={`resource-chip ${resource.tone}`} key={resource.key} role="listitem" aria-label={`${resource.label} ${inventory[resource.key].toLocaleString("ko-KR")}`} title={resource.label}><ResourceIcon resource={resource.key} /><strong>{inventory[resource.key].toLocaleString("ko-KR")}</strong></div>)}</div>
+  const { language } = useLanguage()
+  const english = language === "en"
+  return <div className="resource-hud" aria-label={english ? "Resources" : "보유 자원"} role="list">{RESOURCE_META.map((resource) => { const label = english ? RESOURCE_LABELS_EN[resource.key] : resource.label; return <div className={`resource-chip ${resource.tone}`} key={resource.key} role="listitem" aria-label={`${label} ${inventory[resource.key].toLocaleString("ko-KR")}`} title={label}><ResourceIcon resource={resource.key} /><strong>{inventory[resource.key].toLocaleString("ko-KR")}</strong></div> })}</div>
 }
 
 export function GameNav({ activeTab, onNavigate }: { readonly activeTab: TerminalTab; readonly onNavigate: (tab: TerminalTab) => void }) {
@@ -47,7 +52,10 @@ interface CommunityBuildPanelProps {
 }
 
 export function CommunityBuildPanel({ inventory, contributed = { wood: 0, iron: 0, signal: 0, reclaimed: 0 }, progress, onDeposit }: CommunityBuildPanelProps) {
-  return <section className="build-panel" aria-labelledby="build-panel-title"><div className="build-panel-heading"><div><span className="eyebrow">SHARED CONSTRUCTION</span><h2 id="build-panel-title">TERRA 공동기지 복구</h2></div><strong>{progress}%</strong></div><div className="build-progress" aria-label={`공동 건설 진행도 ${progress}%`} role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}><span style={{ width: `${progress}%` }} /></div><p className="build-panel-copy">모두의 생활과 다음 항로를 위해 녹슨 기지를 다시 깨웁니다.</p><ul className="material-list">{RESOURCE_META.map((resource) => { const required = BUILD_REQUIREMENTS[resource.key]; const personal = inventory[resource.key]; const shared = contributed[resource.key]; const ratio = Math.min(100, Math.round((shared / required) * 100)); return <li className="material-row" key={resource.key}><span className={`resource-glyph ${resource.tone}`} aria-hidden="true" /><span className="material-name"><strong>{resource.label}</strong><small>{resource.rare ? "희귀 · 특별 탐사" : "탐사와 광장 수집"}</small></span><span className="material-amount"><strong>{shared.toLocaleString("ko-KR")}</strong><small>/ {required.toLocaleString("ko-KR")}</small><i aria-hidden="true"><b style={{ width: `${ratio}%` }} /></i></span><span className="material-shared">개인 보유 <b>{personal.toLocaleString("ko-KR")}</b></span><span className="material-actions">{onDeposit ? <><button type="button" onClick={() => onDeposit(resource.key, 1)} disabled={personal < 1} aria-label={`${resource.label} 1개 넣기`}>1개 넣기</button><button type="button" onClick={() => onDeposit(resource.key, personal)} disabled={personal < 1} aria-label={`${resource.label} 모두 넣기`}>모두 넣기</button></> : null}</span></li> })}</ul></section>
+  const { language } = useLanguage()
+  const english = language === "en"
+  const progressLabel = english ? `Shared construction progress ${progress}%` : `공동 건설 진행도 ${progress}%`
+  return <section className="build-panel" aria-labelledby="build-panel-title"><div className="build-panel-heading"><div><span className="eyebrow">SHARED CONSTRUCTION</span><h2 id="build-panel-title">{english ? "TERRA PROJECT BASE" : "TERRA 공동기지 복구"}</h2></div><strong>{progress}%</strong></div><div className="build-progress" aria-label={progressLabel} role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}><span style={{ width: `${progress}%` }} /></div><p className="build-panel-copy">{english ? "Restore the rusted base for everyone's home and the next route." : "모두의 생활과 다음 항로를 위해 녹슨 기지를 다시 깨웁니다."}</p><ul className="material-list">{RESOURCE_META.map((resource) => { const required = BUILD_REQUIREMENTS[resource.key]; const personal = inventory[resource.key]; const shared = contributed[resource.key]; const ratio = Math.min(100, Math.round((shared / required) * 100)); const label = english ? RESOURCE_LABELS_EN[resource.key] : resource.label; return <li className="material-row" key={resource.key}><span className={`resource-glyph ${resource.tone}`} aria-hidden="true" /><span className="material-name"><strong>{label}</strong><small>{resource.rare ? (english ? "RARE · SPECIAL EXPLORATION" : "희귀 · 특별 탐사") : (english ? "EXPLORATION + PLAZA COLLECTION" : "탐사와 광장 수집")}</small></span><span className="material-amount"><strong>{shared.toLocaleString("ko-KR")}</strong><small>/ {required.toLocaleString("ko-KR")}</small><i aria-hidden="true"><b style={{ width: `${ratio}%` }} /></i></span><span className="material-shared">{english ? "PERSONAL HOLDING" : "개인 보유"} <b>{personal.toLocaleString("ko-KR")}</b></span><span className="material-actions">{onDeposit ? <><button type="button" onClick={() => onDeposit(resource.key, 1)} disabled={personal < 1} aria-label={`${label} ${english ? "deposit one" : "1개 넣기"}`}>{english ? "DEPOSIT 1" : "1개 넣기"}</button><button type="button" onClick={() => onDeposit(resource.key, personal)} disabled={personal < 1} aria-label={`${label} ${english ? "deposit all" : "모두 넣기"}`}>{english ? "DEPOSIT ALL" : "모두 넣기"}</button></> : null}</span></li> })}</ul></section>
 }
 
 export function GlobalChatDock({ nickname, onOpenChat }: { readonly nickname: string; readonly onOpenChat: () => void }) {

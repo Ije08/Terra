@@ -1,8 +1,12 @@
 # Artisan notes
+- 2026-07-22: Added phase-gated plaza signal hotspots and two accessible mini-games: timing alignment and four-node pattern decoding, while keeping the right HUD outside the interaction layer.
+
+- 2026-07-22: Added opaque plaza background crossfade state between time phases, lowered dawn treatment, and applied the shared command-view entrance animation to route/plaza mounts.
 
 - The app uses a single client-side `app/page.tsx` shell with local `useState` for screen and game state.
-- TerraCanvas now selects the v4 female-cute 4x4 walk and hand-reach sheets when available; F drives the interaction sequence and v3 remains the fallback for other presets.
+- TerraCanvas now selects the v5 4x4 walk and hand-reach sheets for all four fixed presets; F drives the four-frame interaction sequence and each profile preview uses the down-facing front cell.
 - TerraCanvas no longer mounts a plaza terminal button or terminal fallback; F only collects a nearby resource while keeping the hand-reach animation.
+- v5 male-cute, male-composed, female-cute, and female-composed walk/hand-reach sheets are active under `public/assets/sprites/terra-explorer-v5/`; keep the four preset keys aligned between profile UI and TerraCanvas.
 - Start-screen interaction is isolated in `TerraStartScreen`; authentication is currently a local-development entry point.
 - Character profiles are stored under `terra.character-profile` in `localStorage`; login skips character creation only when the stored profile passes the local shape guard.
 - The start-screen orbit layer was removed while keeping the existing planet, moon, sun, and star layers.
@@ -25,3 +29,60 @@
 - Once the user finalized the start title position, `MovableStartTitle` became a read-only presentation component: it loads the persisted position but renders no adjustment controls or drag handlers.
 - Persisted start-title hydration is hidden until the saved position is read, preventing the default lower-left coordinates from flashing during a refresh.
 - The start action now bypasses the auth modal and calls the existing login transition directly; the loading destination still branches to character creation or COMMAND from the stored profile.
+- The forest prototype keeps movement state local: held WASD/arrow keys and the eight-button D-pad feed the same normalized movement loop, while the v5 sheet keeps the nearest cardinal facing for diagonal travel.
+- v6 `male-composed` walk and idle candidates are staged under `public/assets/sprites/terra-explorer-v6/male-composed/`; both use the same 4x4 direction-row contract, 256px cells, and hands-down travel silhouette. Keep them disconnected from runtime until visual approval.
+- v6 `male-composed/interaction-4x4` is now connected to the forest prototype; the F action advances frames 1→2→3→0 while the walk path remains hands-down and the v6 idle sheet is selected when stationary.
+- Female v6 production work is paused at the concept gate; the approved candidate is stored at `public/assets/concepts/terra-explorer/female-composed-v6-concept.png` and should not be converted into sprites until the user accepts the silhouette, hair, outfit, and proportion direction.
+- v9 male/female walk candidates use low-contact crossed passing steps instead of high-knee poses; they are stored separately from runtime so the user can compare the four columns before activation.
+- Male-composed walk now uses the v9 sheet, while v6 remains the source for idle and F interaction. Female-composed v10 is staged separately with the new blonde bob reference design and is not active yet.
+- The pastel female concept was refined to v2 with slightly longer hair and a softer dreamy gaze; the approved image is `public/assets/concepts/terra-explorer/female-pastel-pixel-concept-v2.png`.
+- Female-composed v12 now has staged 4x4 256px idle and interaction sheets derived from the approved blonde walk design; the four rows remain front, left profile, right profile, and back, and the sheets are not runtime-connected yet.
+- Latest composed motion routing is now action-specific: male uses v9 walk/v6 idle+interaction, female uses v10 walk/v12 idle+interaction; cute presets remain on v5.
+- The 3D forest keeps the player at the world origin on entry and locks the camera to the live player position without follow lag. Region context is a three-second centered intro; keyboard input remains the only visible movement control.
+- 2026-07-22: Updated the project view to a background-first composition, renamed 공동건설 to 프로젝트, and kept the TERRA restoration scene readable behind lighter glass panels.
+- 2026-07-22: Compressed the TERRA project contribution layout to reveal more of the restoration background and personalized the progress explanation with an emphasized player nickname.
+- 2026-07-22: Brightened the project restoration image and added subtle CSS-only construction glow and drifting particle layers behind the UI.
+- 2026-07-22: Added the supplied text-focus-in entrance effect to the start-screen brand lockup and triggered it only after the saved title position is ready.
+- 2026-07-22: Sequenced the start-screen login action after the brand lockup using scale-in-ver-center with a reduced-motion immediate state.
+- 2026-07-22: Restyled the Terra access action as a chamfered glass console button with a gold star signal, cyan hover glow, and light sweep.
+- 2026-07-22: Removed the button star icon and enlarged/centered the Terra access label for clearer hierarchy.
+- 2026-07-22: Added quarter-turn ramp auto-snap to terrain and neighboring blocks, plus runtime ramp-end traversal and side-entry blocking in `app/game/level.ts`, `app/tools/level-editor/LevelEditor.tsx`, and `app/components/TerraForestScene.tsx`.
+- 2026-07-22: Added local player progression derived from project contributions and mission completions; the header shows the current rank and featured specialty title, while the project panel shows XP progress and earned titles.
+- 2026-07-22: Added the silver-braid female variant to the creation flow as a typed `HeadVariant`, with a 4x4 preview crop and migration-safe fallback when switching to the male profile.
+- 2026-07-22: Replaced the silver-braid v14 8-direction sheets with v15 4-direction Idle/Walk/Run/Interaction sheets; front, left, right, and back rows now share the existing 4x4 runtime contract.
+- 2026-07-22: Refined the profile header into a numeric level + title + XP bar layout and added a clickable title-selection dialog for unlocked rank/specialty titles.
+- 2026-07-22: Removed the redundant project-side rank card, preserved the translucent panel system, increased the construction particle visibility, and added the supplied scale-up-top entrance animation to the title picker.
+- 2026-07-22: Reframed 교신 as a completed-mission archive and praise wall with responsive masonry cards, mission stamps, photo/note preservation, one-praise behavior, and a calmer non-competitive archive explanation.
+- 2026-07-22: Fixed ramp traversal by rejecting side exits, allowing only ramp-end transitions, retrying blocked diagonal movement on each free axis, and auto-fitting snapped ramp height to the connected block top.
+- 2026-07-22: Wired the 3D forest player's Shift run state and F/click interaction trigger to the v15 4x4 run and interaction sheets, preserving the last cardinal direction during the hand motion.
+- 2026-07-22: Corrected silver-braid side-motion playback by using one left-facing row for both horizontal directions, mirroring the right side, alternating the existing side poses as 0-1-2-1, and applying horizontal anchor offsets to interaction frames.
+- 2026-07-22: Integrated mission selection and social proof in one collapsible workspace, with five daily completions, difficulty-aware real/in-game mission pools, resource/XP rewards, and a live praise archive.
+- 2026-07-22: Simplified the mission workspace hierarchy by moving the title/progress into the translucent mission panel, placing mission receive beside type tabs, and removing visible difficulty controls in favor of contextual subtitles.
+- 2026-07-22: Changed the mission workspace to three initial cards per mission type, added a difficulty bar and per-card start/reroll actions, changed start into completion logging, and converted the signal archive to a Pinterest-style gallery.
+- 2026-07-22: Stabilized level-editor transforms by committing canonical object/wall values and resetting transient gizmo scale; added inspector plus Delete/Backspace deletion and corrected newly placed ramp support/auto-snap calculations.
+- 2026-07-22: Rebuilt the plaza as a layered full-bleed scene with real-time dawn/day/evening/night selection, density crossfade foregrounds, a development-only phase test control, and compact right-side news/global-chat HUDs.
+- 2026-07-22: Removed all satellite layers from the active plaza composition at the user's direction; space, Earth, foreground, lighting, and right-side HUD remain active.
+- 2026-07-22: Removed the plaza vignette and translucent HUD surfaces so the background remains clear, then allocated a larger right-side grid row to global chat than news.
+- 2026-07-22: Restored translucent right-side HUD panels while keeping the residential foreground fully opaque via a discrete full-image density swap; styled the news scrollbar and changed the plaza chat action to a labeled send button.
+- 2026-07-22: Replaced the layered plaza foreground with the three supplied opaque day/evening/night images; dawn now reuses the day image with a cool saturation/brightness treatment.
+- 2026-07-22: Regenerated male and silver-braid female side-walk strips with explicit alternating crossed-leg poses, composed them into new 4x4 walk sheets, and routed both horizontal directions through left-row mirroring.
+- 2026-07-22: Rebuilt the v16 walk atlases by clearing the old side row before inserting the new strip, preventing the previous and regenerated silhouettes from rendering together.
+- 2026-07-22: Routed silver-braid run playback to the regenerated walk atlas at a faster frame rate, extended male side mirroring to the 3D run fallback, and rescaled the male side row to match front/back height.
+- 2026-07-22: Replaced negative Three.js Sprite scaling with per-cell texture UV mirroring for rightward movement, and moved the corrected male/silver-braid walk atlases to v17 so cached v16 textures cannot preserve the old scale.
+- 2026-07-22: Fixed character creation to the latest silver-braid female explorer, removed gender/type controls, switched its preview to the idle sheet, and connected the 3D forest's stationary state to the four-frame idle texture loop.
+- 2026-07-22: Restored the gender selector while keeping character type removed; male selects the composed runtime variant and both genders share the idle-when-stationary and walk-when-moving state flow.
+- 2026-07-22: Extended the forest header with the shared resource HUD and character profile, changed the entry loading title to 바람이 머무는 숲, added a compositor-safe forest fade-in, and increased the orthographic camera zoom to 64.
+- 2026-07-22: Fixed the start-screen title position for fresh/Incognito sessions by anchoring it to the 1600×900 fixed canvas and migrating legacy viewport-unit offsets.
+- 2026-07-22: Rebuilt the daily mission UI as a dedicated workspace: three visible cards, explicit difficulty controls, completion logging, and a two-column signal archive with independent scrolling.
+- 2026-07-22: Tightened the mission workspace around the left fold tag, removed initial/card animations, and preloaded four photo-backed signal archive examples for a populated gallery state.
+- 2026-07-22: Simplified mission browsing by hiding the fold control, fitting three quest cards in the panel, and using a one-column vertical archive with larger supporting text.
+- 2026-07-22: Replaced level-editor GLB props with typed built-in tree/rock props. Background trees remain decorative but collidable; collectible trees and rocks resolve nearest F-key interactions, animate briefly, disappear by object ID, and award wood/iron. The editor exposes single placement and deterministic scatter placement for each built-in prop.
+- 2026-07-22: Reused Plaza's ChatWindow and PlazaNewsPanel in Terra forest and lifted chat state into page.tsx so both screens share the same messages and send handler.
+- 2026-07-22: Set the command center's initial terminal tab to the Plaza community view so entering the main menu opens 광장 first.
+- 2026-07-22: Added a shared mission pool with extra real/in-game titles, five-second randomized spawning, seven-or-ten-second expiry for unstarted live missions, and live-mission prioritization in the three-card workspace.
+- 2026-07-22: Passed collected built-in prop IDs through the Three.js movement collision query so an interacted tree/rock loses both its render and collision state, and added bounded timed activity to the shared plaza news/chat panels.
+- 2026-07-22: Removed timed quest spawn/expiry so mission cards only change through explicit receive/reroll actions, and localized all preset mission card and seed archive copy for English mode.
+- 2026-07-22: Added a shared `TerraAudioManager` with looping start/create, route, social hub, and TERRA tracks, 420ms crossfades, autoplay-resume listeners for user gestures, and a command-center BGM toggle in the top bar.
+- 2026-07-22: Replaced the command-only BGM button with the shared `TerraMusicToggle` component, using a compact speaker icon plus ON/OFF state in both the start screen and command-center header.
+- 2026-07-22: Added `LanguageProvider` and `LanguageToggle` with localStorage persistence and document-language synchronization; localized the start/create/loading flow, route/project/signal headings, mission tabs, command navigation, and profile title picker for Korean/English switching.
+- 2026-07-22: Completed the remaining command-center English-mode copy for route planet states, plaza news/time controls, project resource/contribution panels, and chat controls; normalized non-system chat participants to `대원_01`-style labels and added English seed/live chat copy.
