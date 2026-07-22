@@ -1,100 +1,325 @@
 # FIRST LIGHT: TERRA
 
-작은 현실 행동과 사람 사이의 따뜻한 신호가 하나의 공동 우주를 만드는 소셜 우주 탐사 게임입니다.
+> A social space-exploration game where small real-world actions and warm human signals build a shared universe.
 
-## 현재 구현 상태
+**FIRST LIGHT: TERRA** is a local-first Build Week prototype about turning small personal actions into visible progress for a shared world.
 
-현재 저장소는 Build Week P0 첫 수직 슬라이스를 구현한 로컬 프로토타입입니다.
+Players create an explorer, enter TERRA, explore a watercolor-style 3D forest, gather resources, and contribute them to a cooperative restoration project. The broader product direction connects these in-game actions with real-life missions, social encouragement, and progress toward LUNA, SOL, and eventually beyond the solar system.
 
-- 지구 쪽 하단에 배치한 단일 `테라 접속` 시작 행동과 글래스모피즘 로그인·계정 생성 패널
-- 반복 별빛과 드물고 빠르게 지나가는 혜성 효과(모션 감소 설정 지원)
-- 로그인·계정 생성·광장 이동에 공용 검은 로딩 페이지와 상황별 안내 문구 적용
-- 캐릭터 생성: 닉네임, 남성 또는 은발 여성 탐사대원, 수트 색
-- 품질 검수된 4방향 캐릭터 시트와 8방향 입력, 걷기·대기·달리기·상호작용 모션
-- 로그인·캐릭터 생성 이후 항로 관제실을 먼저 표시하고, TERRA를 선택해야 광장 플레이 시작
-- Three.js 기반 수채화풍 3D 숲과 플레이어 추적 카메라
-- 지형·길·환경 오브젝트·수집 오브젝트·캐릭터를 분리한 렌더 구조와 간단한 충돌 처리
-- 숲의 나무·바위 자원 수집과 F 상호작용
-- 수집 자원과 TERRA 공동기지 복구 진행도의 로컬 반영
-- 탐사 단말기 정보를 메인 메뉴로 승격한 풀스크린 항로 관제실
-- 광장·시그널·프로젝트·항로 네비게이션, 4종 자원 HUD, 공동 건설 패널, 전체 교신 UI
+---
 
-현재는 서버 구현 전의 로컬 개발 모드입니다. Firebase 인증, 실제 멀티플레이어, 클라우드 저장, 서버 검증은 다음 단계 계획으로만 정리되어 있습니다. 로컬 로그인 폼의 입력값과 비밀번호는 저장하거나 전송하지 않으며, 화면에 표시되는 채팅과 공동 진행도도 브라우저 메모리에만 존재합니다. `ChatGPT로 계속하기`는 Codex Sites 배포에서 `NEXT_PUBLIC_CHATGPT_AUTH_ENABLED=true`로 설정했을 때만 활성화됩니다.
+## Current Build
 
-## 실행
+This repository contains the first Build Week P0 vertical slice.
+
+Implemented features include:
+
+- A single **Connect to TERRA** entry action positioned near Earth
+- Glassmorphism login and account-creation panels
+- Repeating starlight and rare fast-moving comet effects
+- Reduced-motion accessibility support
+- Shared black loading screens with context-specific messages
+- Character creation with:
+  - Nickname
+  - Male explorer or silver-haired female explorer
+  - Suit color
+- Quality-checked four-direction character sheets
+- Eight-direction input mapped to the nearest four-direction pose
+- Idle, walk, run, and interaction animations
+- Route Control Room shown after login and character creation
+- TERRA selection before entering the playable area
+- Three.js-based watercolor-style 3D forest
+- Player-following camera
+- Separated terrain, paths, environment objects, collectibles, and character rendering
+- Basic collision handling
+- Wood and stone resource gathering with the `F` interaction key
+- Local resource state and TERRA restoration progress
+- Full-screen Route Control Room promoted from the original terminal interface
+- Plaza, Signal, Project, and Route navigation
+- Four-resource HUD
+- Cooperative construction panel
+- Global communication-style UI
+
+The login, account-creation, and **Continue with ChatGPT** interfaces are implemented, but are hidden in the public demo to reduce friction during evaluation.
+
+The current build runs in local development mode before server integration. Firebase authentication, live multiplayer, cloud persistence, and server-side validation are documented as future work.
+
+Values entered into the local login form are not stored or transmitted. Chat, shared progress, and related social state currently exist only in browser memory.
+
+`Continue with ChatGPT` is enabled on Codex Sites only when:
+
+```env
+NEXT_PUBLIC_CHATGPT_AUTH_ENABLED=true
+```
+
+---
+
+## Public Demo
+
+[TERRA on Codex Sites](https://terra-openai-build-week.frameone08.chatgpt.site)
+
+The public demo skips the hidden login flow and is designed for direct evaluation.
+
+### Demo Flow
+
+1. Choose a male explorer or silver-haired female explorer.
+2. Enter the TERRA Plaza.
+3. Review the Plaza, Signal, Project, and Route menus.
+4. Enter the TERRA forest.
+5. Explore the environment and gather wood and stone.
+6. Contribute gathered resources to the restoration Project.
+7. Confirm that the contribution is reflected in shared progress toward LUNA.
+
+---
+
+## Product Direction
+
+Online anonymity can make harmful communication easier. Offline, people may hesitate to speak first, offer encouragement, or begin a small positive action.
+
+FIRST LIGHT: TERRA proposes a warmer shared space where small actions remain visible and people can meet without excessive social pressure.
+
+The full product direction is organized around four systems:
+
+### Plaza
+
+A social starting point where players meet, communicate, view community activity, and enter shared experiences.
+
+### Signal
+
+A system connecting small real-world actions with personal records and optional social encouragement.
+
+Examples include stretching, drinking water, looking at the sky, organizing a small space, or preserving a simple observation from daily life.
+
+Signal is not intended to strictly verify or monitor behavior. Its purpose is to preserve a small action as a meaningful signal that can encourage another player.
+
+### Project
+
+A cooperative restoration system where gathered resources become experience, participation feedback, and visible shared progress.
+
+### Route
+
+A planetary progression interface showing TERRA, LUNA, and SOL.
+
+The intended progression is:
+
+```text
+Restore TERRA
+→ Unlock LUNA
+→ Restore the LUNA base
+→ Reach SOL
+→ Begin an expedition beyond the solar system
+```
+
+The final departure beyond SOL represents both humanity moving beyond familiar boundaries and the continued development of human–AI collaboration, including the symbolic arrival of a future GPT-6.
+
+AI does not replace human action or conversation in this world. It preserves records, routes, and shared signals. The players remain the people who create the community.
+
+---
+
+## Running Locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-심사자용 공개 데모: [TERRA on Codex Sites](https://terra-openai-build-week.frameone08.chatgpt.site)
+Open the local URL shown in the terminal.
 
-브라우저에서 출력된 로컬 URL을 열고 `로그인` 또는 `계정 생성`을 선택해 계정 패널을 엽니다. 로컬 프로토타입 폼을 제출하면 저장된 캐릭터가 없을 때는 검은 전환 뒤 캐릭터 생성창이 열리고, 저장된 캐릭터가 있으면 항로 관제실로 이동합니다. 관제실에서 `TERRA 입장하기`를 눌러야 광장 플레이가 시작됩니다.
+In the local development build:
 
-## 검증
+- Select `Login` or `Create Account`.
+- Submit the local prototype form.
+- If no character exists, character creation opens after a black transition screen.
+- If a character already exists, the Route Control Room opens.
+- Select `Enter TERRA` to begin gameplay.
+
+---
+
+## Validation
 
 ```bash
 npm test
+npm run build
 ```
 
-의존성 설치가 완료된 환경에서 `npm run build`를 추가로 실행합니다. 이 저장소는 Codex Sites용 vinext 스타터를 기반으로 합니다.
+This repository is based on the `vinext` starter for Codex Sites.
 
-## 제품 방향
+For fast iteration, focused source tests, relevant linting, and production builds are prioritized before full browser-flow verification.
 
-온라인 공간의 익명성은 상처 주는 말을 쉽게 만들고, 오프라인에서는 서로를 경계하느라 먼저 대화하거나 작은 행동을 건네기 어려워졌습니다. FIRST LIGHT: TERRA는 사람의 행동과 대화를 AI가 대신하는 대신, 작은 행동이 공동 세계에 남고 사람과 사람이 부담 없이 만나는 따뜻한 가상공간을 제안합니다.
+---
 
-TERRA에서 시작된 신호는 LUNA 항로를 지나 SOL 이후의 태양계 밖 이야기로 이어집니다. AI는 인간의 신호를 대신 만드는 존재가 아니라 기록과 항로를 보존하는 세계관적 장치이며, 공동체를 만드는 주체는 플레이어입니다.
+## Character and Asset Principles
 
-## 에셋 원칙
+Generated image assets should not contain embedded text.
 
-맵은 개별 레이어 에셋으로 구성합니다.
+Character and animation sheets are created through the `generate2dsprite` workflow. Original generations, cleaned outputs, frames, prompts, and quality-control results are stored together.
+
+The runtime uses fixed presets rather than dynamically combining separate body, head, and clothing layers.
+
+The current submission uses:
+
+- Male explorer
+- Silver-haired female explorer
+- Four-direction motion sheets
+- Separate idle, walk, run, and interaction states
+- Eight-direction input mapped to the nearest available pose
+
+Current runtime character assets are stored in:
+
+```text
+public/assets/sprites/terra-explorer-v15/
+public/assets/sprites/terra-explorer-v17/
+```
+
+Earlier v2, v3, and v4 sheets and independent body/head layers remain only as generation and quality-control references.
+
+The map and runtime separate:
 
 ```text
 ground → path → buildings → props → actors → foreground
 ```
 
-이미지 생성 에셋에는 텍스트를 넣지 않습니다. 캐릭터와 애니메이션 시트는 `generate2dsprite` 스킬로 제작하고, 원본·정리본·프레임·프롬프트·QC 결과를 함께 보관합니다.
+---
 
-캐릭터는 독립 바디·헤드·의상을 런타임에 억지로 조합하지 않고, 생성 품질과 발 위치가 검증된 고정 프리셋을 사용합니다. 현재 제출 경로는 남성 탐사대원과 은발 여성 탐사대원의 4×4 모션 시트를 사용하며, 대기·걷기·달리기·상호작용을 분리합니다. 입력은 8방향을 지원하지만 현재 시트가 4방향이므로 대각선 입력은 가장 가까운 방향 포즈로 표시합니다.
+## Development-Only Level Editor
 
-현재 런타임 캐릭터 에셋은 `public/assets/sprites/terra-explorer-v15/`와 `public/assets/sprites/terra-explorer-v17/`의 4×4 시트에 보관합니다. 이전 v2·v3·v4 시트와 독립 바디·헤드 레이어는 생성 과정의 참고/QC 기록으로 남기되 게임 실행 경로에서는 사용하지 않습니다. 남성·은발 여성의 걷기 시트와 대기·상호작용 시트를 분리해 사용하며, 8방향 입력은 가장 가까운 4방향 포즈로 표시합니다.
+Run the game and level editor separately:
 
-## 다음 단계
+```bash
+npm run dev
+npm run dev:level-editor
+```
 
-1. Firebase 계정 로그인·계정 생성과 프로필 저장
-2. Realtime Database presence, 전체 채팅, 근거리 말풍선
-3. Firestore 공동 진행도와 뉴스 이벤트
-4. 서버 검증이 있는 수집·공동 건설
-5. 사진 탐사 기록과 갤러리
-6. LUNA 해금 연출과 Codex Sites 배포
+Then open:
+
+```text
+http://localhost:3000/tools/level-editor
+```
+
+The editor supports separate editing for:
+
+- TERRA Forest
+- TERRA Residential Plaza
+- New `terra-*.json` maps
+
+Main features include:
+
+- 32×32 heightfield terrain
+- Grass, path, dirt, and rock painting
+- Raise and lower terrain tools
+- Separate top and side material colors
+- Watercolor-style low-poly slopes
+- Terrain size and height-range controls
+- Collision wall editing
+- GLB object placement
+- Undo and redo
+- JSON import and export
+- Project save workflow
+
+Controls:
+
+- Left click: select or paint
+- Right click: rotate
+- Middle click: pan
+- Mouse wheel: zoom
+
+GLB files are stored in:
+
+```text
+public/assets/models/level-editor/
+```
+
+Runtime level data is loaded from:
+
+```text
+app/game/levels/terra-forest.json
+app/game/levels/terra-plaza.json
+```
+
+The editor and local save server are development-only tools.
+
+---
+
+## Codex and GPT-5.6 Workflow
+
+Before starting work in a new Codex session, the session reads:
+
+```text
+README.md
+docs/build-week/STATUS.md
+```
+
+This allows each session to understand previous decisions and the current implementation state before continuing.
+
+Independent work is divided across parallel sessions when appropriate.
+
+Examples:
+
+- Asset generation and cleanup
+- Front-end and runtime implementation
+- Testing and documentation review
+
+For visible front-end changes, the workflow does not repeat the full browser flow by default. It prioritizes:
+
+- Focused source tests
+- Relevant linting
+- Production builds
+
+Browser verification is used when:
+
+- A feature failure is reported
+- A critical flow requires direct validation
+- Direct browser reproduction is explicitly requested
+
+This keeps the iteration cycle short:
+
+```text
+Implement
+→ Run fast checks
+→ Review
+→ Fix
+→ Continue
+```
+
+Approximately 99% of the implementation work was completed in collaboration with Codex, using GPT-5.6 to iterate on screen flow, state transitions, exploration systems, character motion, tests, debugging, and documentation.
+
+The project author remained responsible for product direction, feature prioritization, worldbuilding, final decisions, and runtime validation.
+
+Usage records, major decisions, test results, and limitations are documented throughout the implementation process.
+
+---
 
 ## Build Week
 
-### AI 워크플로우와 시간 단축 기준
+- **Track:** Apps for Your Life
+- **Primary audience:** People who want to begin small positive actions
+- **Core demo:** Character selection → TERRA Plaza → TERRA forest exploration → Resource gathering → Project contribution → LUNA progress
+- **Platform:** Codex Sites
+- **Current build:** Local-first P0 vertical slice
 
-- README와 `docs/build-week/STATUS.md`를 먼저 읽어 기존 결정과 현재 진행 상태를 파악합니다.
-- 에셋 생성과 프론트 구현처럼 독립적인 작업은 세션을 나누어 병렬 진행할 수 있습니다.
-- 사용자가 화면에서 바로 확인할 수 있는 프론트 변경은 브라우저 검증을 기본으로 반복하지 않습니다. 소스 테스트, 관련 린트, 빌드처럼 빠른 검사를 우선합니다.
-- 사용자가 기능 불량을 제보하거나 직접 검증을 요청한 경우에만 브라우저에서 해당 최소 흐름을 재현합니다.
-- 이 기준으로 불필요한 전체 브라우저 플로우 반복을 줄이고, 구현-빠른 검사-사용자 피드백의 짧은 사이클을 유지합니다.
+Submission planning and Devpost requirements are documented in:
 
-- Track: Apps for Your Life
-- Primary audience: 작은 행동을 시작하고 싶은 개인
-- Core demo: 캐릭터 생성 → 항로 관제실 → TERRA 숲 탐험 → 자원 수집 → 프로젝트 기여와 LUNA 진행도 확인
-- 전체 개발 작업의 약 99%는 Codex 협업으로 진행했으며, GPT-5.6을 사용해 화면 흐름·상태 전환·탐험 시스템·캐릭터 모션·테스트를 반복 구현했습니다. 최종 방향 선택과 실행 검증은 프로젝트 제작자가 담당했습니다.
-- Codex와 GPT-5.6 사용 기록, 주요 결정, 테스트 결과, 제한 사항은 구현 단계별로 문서화합니다.
+[`docs/build-week/SUBMISSION-BRIEF.md`](docs/build-week/SUBMISSION-BRIEF.md)
 
-제출용 수정 기획과 Devpost 제출 기준은 [`docs/build-week/SUBMISSION-BRIEF.md`](docs/build-week/SUBMISSION-BRIEF.md)에 정리합니다. 영상 대본과 촬영 체크리스트는 로컬 제작 자료이며 제출 저장소의 필수 파일은 아닙니다.
+Video scripts and recording checklists are local production materials and are not required repository files.
 
-## 라이선스
+---
 
-원본 소스 코드와 프로젝트 작성 문서는 [MIT License](LICENSE)로 공개합니다. Pixabay 이미지, 생성 에셋, 제공받은 자료, 외부 라이브러리는 MIT로 재허가하지 않으며 각각의 사용 조건을 따릅니다. 자세한 구분은 [ASSET-LICENSES.md](ASSET-LICENSES.md)를 확인하세요.
+## Next Steps
 
-## 개발 전용 레벨 제작기
+1. Firebase authentication and persistent profiles
+2. Realtime Database presence, global chat, and proximity speech bubbles
+3. Firestore-based shared progress and news events
+4. Server-validated resource gathering and cooperative construction
+5. Photo-based exploration records and gallery features
+6. LUNA unlock sequence and expanded Codex Sites deployment
 
-게임 서버와 별도로 `npm run dev:level-editor`를 실행한 뒤 `http://localhost:3000/tools/level-editor`에 접속합니다. 맵 선택기에서 `테라 숲`과 `테라 거주 광장`을 독립적으로 편집하고 저장할 수 있으며, 새 맵을 만들어 `terra-*.json`으로 관리할 수도 있습니다.
+---
 
-제작기는 기본 32×32 높이필드와 브러시를 제공합니다. 잔디·길·흙·바위 표면을 칠하고 지형을 올리거나 낮출 수 있으며, 각 재질의 상부 색상과 측면 색상을 따로 지정해 수채화풍 로우폴리 경사를 표현합니다. 지형 크기·높이 범위, 벽 조각, GLB 오브젝트를 편집할 수 있고 실행 취소·다시 실행·JSON 가져오기·내보내기를 지원합니다. 좌클릭은 선택·브러시, 우클릭은 회전, 중클릭은 이동, 휠은 확대·축소에 사용합니다.
+## License
 
-GLB는 `public/assets/models/level-editor/`에 업로드되고, `프로젝트에 저장`을 누르면 선택한 맵의 JSON에 기록됩니다. 런타임은 `app/game/levels/terra-forest.json`과 `app/game/levels/terra-plaza.json`을 읽어 지형·벽·오브젝트를 표시하며, 지형 경계와 충돌 벽 밖으로 이동할 수 없습니다. 기존 버전 1 숲 JSON은 기본 잔디 높이필드로 자동 변환됩니다. 테라 숲은 새 맵 상태로 초기화되어 나무를 포함하지 않으며, 나무는 에디터에서 준비된 GLB를 배치할 때 추가합니다. 에디터 화면과 로컬 저장 서버는 개발 환경에서만 동작합니다.
+Original source code and project-authored documentation are released under the [MIT License](LICENSE).
+
+Pixabay images, generated assets, provided materials, and third-party libraries are not relicensed under MIT and remain subject to their own usage terms.
+
+See [ASSET-LICENSES.md](ASSET-LICENSES.md) for details.
