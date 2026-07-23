@@ -4,7 +4,7 @@
 
 **FIRST LIGHT: TERRA** is a local-first Build Week prototype about turning small personal actions into visible progress for a shared world.
 
-Players create an explorer, enter TERRA, explore a watercolor-style 3D forest, gather resources, and contribute them to a cooperative restoration project. The broader product direction connects these in-game actions with real-life missions, social encouragement, and progress toward LUNA, SOL, and eventually beyond the solar system.
+Players create an explorer, enter TERRA, explore a forest, gather resources, and contribute them to a cooperative restoration project. The broader product direction connects these in-game actions with real-life missions, social encouragement, and progress toward LUNA, SOL, and eventually beyond the solar system.
 
 ---
 
